@@ -1,0 +1,33 @@
+<div class="container-fluid text-center">
+    <h2 class="text-primary">Compare Files</h2>
+    <div>
+        <form [formGroup]="fcForm" (ngSubmit)="compareFiles()">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-6">
+                    <div class="mb-3">
+                        <label for="formFile1" class="form-label">File 1</label>
+                        <input class="form-control" type="file" [accept]="fileTypesAccepted" formControlName="formFile1" id="formFile1" attr-inp="formFile1" (change)="onFileSelected($event)" #fileUpload1>
+                        <div class="small text-secondary ms-1">Accepted file formats <strong>
+                            {{fileTypesAccepted}}</strong> with max 1MB size
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-lg-6">
+                    <div class="mb-3">
+                        <label for="formFile2usu" class="form-label">File 2</label>
+                        <input class="form-control" type="file" [accept]="fileTypesAccepted" formControlName="formFile2" id="formFile2" attr-inp="formFile2" (change)="onFileSelected($event)" #fileUpload2>
+                        <div class="small text-secondary ms-1">Accepted file formats <strong>
+                            {{fileTypesAccepted}}</strong> with max 1MB size
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttonWrapper">
+                <button type="submit" class="btn btn-secondary" [ngClass]="{'btn-success btn-lg': fcForm.valid}" [disabled]="!fcForm.valid">Compare</button>
+                <div class="mt-3">
+                    <button type="button" class="btn btn-warning" (click)="resetFiles()">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
